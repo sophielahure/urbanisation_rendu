@@ -1,0 +1,51 @@
+<div class="divDeconnexion" align="right">
+  <p>{{entreprise_name}}, <a [routerLink]="['/login_company']" align="right" (click)="deconnection()">Se deconnecter</a></p>
+</div>
+
+<button style="margin-left:10%;margin-top:20px;" type="button" (click)="show_annonces_page()" class="btn btn-outline-secondary">< Retour aux annonces </button>
+
+<section>
+  <div class="col-sm-6">
+    <h1 align="center">{{this.details[0][1]}}</h1>
+  </div>
+
+  <h4> Récapitulatif de votre ciblage : </h4>
+  <p><span>Age</span> entre {{this.details[0][4]}} ans  et {{this.details[0][5]}} ans </p>
+  <p><span>Genre</span> : {{this.details[0][3]}}</p>
+  <p><span>Photo</span> : {{this.details[0][2]}}</p>
+  <p><span> Mots clés</span> : </p>
+  <ul>
+    <li *ngFor="let keyword of this.keywords">{{this.keyword.name}}</li>
+  </ul>
+
+  <button class="btn btn-outline-danger" type="submit" (click)="delete_and_back_to_index()" data-toggle="modal" data-target="#myModal" style="margin-right:10%;margin-left:10%;">Supprimer</button>
+  <button class="btn btn-outline-warning" type="button" (click)="show_modification_page()">Modifier</button>
+
+</section>
+
+<!-- The Modal -->
+<div class="modal" id="myModal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h4 class="modal-title">Ciblage supprimé</h4>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+
+      <!-- Modal body -->
+      <div class="modal-body">
+        Votre ciblage a été supprimé
+      </div>
+
+      <!-- Modal footer -->
+      <div class="modal-footer">
+        <button type="button" (click)="show_annonces_page()" class="btn btn-danger" data-dismiss="modal">Fermer</button>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+

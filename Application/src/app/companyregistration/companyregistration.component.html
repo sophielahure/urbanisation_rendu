@@ -1,0 +1,37 @@
+<div class="application-form">
+  <h1 align="center">Inscription Annonces</h1>
+  <br>
+  <div class="form-group row">
+    <label class="col-sm-4 col-form-label">Entreprise :</label>
+    <div class="col-sm-8" >
+      <input type=text class="form-control" [(ngModel)]="company">
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label for="email" class="col-sm-4 col-form-label">Email :</label>
+    <div class="col-sm-8" >
+      <input id="email" type="email" class="form-control" aria-describedby="emailHelp" [(ngModel)]="email">
+    </div>
+  </div>
+  <div class="form-group row">
+    <label class="col-sm-4 col-form-label">Mot de passe :</label>
+    <div class="col-sm-8" >
+      <input type="password" class="form-control" [(ngModel)]="mdp">
+    </div>
+  </div>
+  <div class="form-group row">
+    <label class="col-sm-4 col-form-label">Confirmation du mot de passe :</label>
+    <div class="col-sm-8" >
+      <input type="password" class="form-control" [(ngModel)]="mdp_confirmation">
+    </div>
+  </div>
+  <div *ngIf="errorMessage.length!=0" class="alert alert-danger" role="alert"> {{errorMessage}} </div>
+
+  <div align="center">
+    <button type="submit" class="btn btn-primary" (click)="inscription()">Inscription</button>
+    <br>
+    <br>
+    <p>Vous êtes déjà inscrit ?<a href="/login_company"> connectez-vous</a></p>
+  </div>
+</div>

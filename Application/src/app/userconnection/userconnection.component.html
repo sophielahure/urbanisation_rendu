@@ -1,0 +1,23 @@
+<div class="application-form">
+  <h1 align="center">Connexion Playlist</h1>
+  <br>
+  <div class="form-group">
+    <input type=email class="form-control" aria-describedby="emailHelp" [(ngModel)]="email" placeholder="Email">
+  </div>
+  <div class="form-group">
+    <input type="password" class="form-control" [(ngModel)]="mdp" placeholder="Mot de passe">
+  </div>
+  <div *ngIf="errorMessage.length!=0" class="alert alert-danger" role="alert"> {{errorMessage}} </div>
+
+  <div align="center">
+    <button type="submit" class="btn btn-primary" (click)="authenticate()">Connexion</button>
+    <br>
+    <br>
+    <p>Vous n'êtes pas inscrit?<a href="/inscription"> inscrivez-vous</a></p>
+  </div>
+</div>
+
+
+
+
+

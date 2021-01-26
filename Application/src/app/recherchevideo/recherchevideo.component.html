@@ -1,0 +1,95 @@
+
+<div class="divDeconnexion" align="right">
+  <p>{{firstname}} {{lastname}}, <a [routerLink]="['/login']" align="right" (click)="deconnection()">Se deconnecter</a></p>
+</div>
+
+<h1 align="center">-Recherche-</h1>
+
+<div id ="cont">
+  <div class ="btn" id="btn-left">
+    <button [routerLink]="['/accueilplaylist']" class="btn btn-outline-secondary">< Mes Playlists YouTube</button>
+  </div>
+  <div class="btn" id="recherche">
+    <input  type="text" placeholder="recherche" [(ngModel)]="recherche" style="width: 100%"  class="form-control" aria-describedby="inputGroup-sizing-default"  />
+  </div>
+  <div class ="btn" id="btn-right">
+    <button (click)="getVideos(recherche)" class="btn btn-success">Valider</button>
+  </div>
+</div>
+
+<div *ngIf="debut" id="add" align="center">
+  <div>
+    <img src="assets/image/advertisement.jpg" class="img" (click)="addClick()">
+    <h3>{{ad.nom}}</h3>
+  </div>
+</div>
+
+<div id="playlists">
+  <div class="row" *ngFor="let video of videos" class="playlist">
+    <div class="col-md-8">
+
+      <iframe class="img" width="430" height="240" [src]="video.url| safe: 'resourceUrl'"></iframe>
+      <p>{{video.title}}</p>
+      <div align="center">
+        <button class="btn btn-outline-success" data-toggle="modal" data-target="#myModal" (click)="setVideoAdd(video.url,video.title, video.videoId)">Ajouter à une playlist</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<!-- modal ajout a une playlist -->
+<div class="modal" id="myModal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h4 class="modal-title">Ajouter à une playlist</h4>
+        <button type="button" class="close" data-dismiss="modal" (click)="close()">&times;</button>
+      </div>
+
+      <!-- Modal body -->
+      <div class="modal-body">
+        <div class="form-group row">
+          <label class="col-sm-4 col-form-label">Selectionner </label>
+
+
+          <div class="col-sm-6" >
+            <select class="form-control" [(ngModel)]="namePlaylist">
+              <option *ngFor="let playlist of playlists" [value]="playlist.id">
+                {{playlist.nom}}
+              </option>
+            </select>
+
+
+          </div>
+        </div>
+      </div>
+
+
+      <div class="modal-body">
+        <div class="form-group row">
+          <label class="col-sm-4 col-form-label">Créer une nouvelle</label>
+          <div class="col-sm-6" >
+            <input type="text" class="form-control" [(ngModel)]="newPlaylist">
+          </div>
+        </div>
+      </div>
+
+      <div class="modal-body">
+        <div *ngIf="errorMessage.length!=0" class="alert alert-danger" role="alert"> {{errorMessage}} </div>
+        <div *ngIf="validationMessage.length!=0" class="alert alert-success" role="alert"> {{validationMessage}} </div>
+      </div>
+
+      <!-- Modal footer -->
+      <div class="modal-footer">
+        <button type="button" data-dismiss="modal" class="btn btn-outline-secondary" (click)="close()">Fermer</button>
+        <button type="button" class="btn btn-success" (click)="addPlaylist()" >Ajouter</button>
+      </div>
+
+    </div>
+  </div>
+</div>
+

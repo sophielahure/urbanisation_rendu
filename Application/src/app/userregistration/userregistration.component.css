@@ -1,0 +1,16 @@
+.connexion {
+  width: 30%;
+}
+
+.centrer {
+  text-align: center;
+}
+
+.application-form {
+  box-sizing: border-box;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  margin: 15px auto;
+  padding: 15px;
+  width: 550px;
+  border-style: double;
+}

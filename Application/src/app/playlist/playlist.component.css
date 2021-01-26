@@ -1,0 +1,32 @@
+.divDeconnexion{
+  margin-right:20px;
+  margin-top:5px;
+}
+
+#cont{
+  width:100%;
+}
+.btn{display:inline-block;margin: 0 10px;vertical-align:top;}
+
+#btn-right{
+  text-align:right;
+  width: 45%;
+}
+
+#btn-left{
+  width: 40%;
+}
+
+.playlist{display:inline-block;margin: 0 20px;vertical-align:top; width:45%;margin-bottom:20px;}
+
+#playlists{
+  margin:30px;
+}
+
+h1{
+  color: #2c2c81;
+}
+
+h3{
+  color: #345b83;
+}

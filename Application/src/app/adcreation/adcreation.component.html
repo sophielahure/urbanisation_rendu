@@ -1,0 +1,125 @@
+<div class="divDeconnexion" align="right">
+  <p>{{entreprise_name}}, <a [routerLink]="['/login_company']" align="right" (click)="deconnection()">Se deconnecter</a></p>
+</div>
+
+<h1 id="title">Nouvelle annonce</h1>
+<form>
+  <div>
+    <div class="form-group row">
+      <div class="col-sm-3">
+        <label for="fname">Nom de l'annonce : &nbsp;</label>
+      </div>
+      <div class="col-sm-3">
+        <input type="text" id="fname"  name="fname" class="form-control"><br>
+      </div>
+    </div>
+
+    <div *ngIf="this.errorMessageName.length!=0" class="alert alert-danger" role="alert"> {{this.errorMessageName}} </div>
+
+    <div class="form-group row">
+      <div class="col-sm-3">
+        <label for="fphoto">Importer la photo : &nbsp;</label>
+      </div>
+      <div class="col-sm-6">
+        <input class="form-control" type="file" id="fphoto" name="fphoto" accept="image/png, image/jpeg" (change)="showPreview($event)" >
+        <div class="imagePreview" *ngIf="imageURL && imageURL !== ''">
+          <img [src]="imageURL" alt="uploadForm.value.name" style="width: 250px;height: 250px;">
+          <h4>{{uploadForm.value.name}}</h4>
+        </div><br>
+
+      </div>
+    </div>
+
+
+    <!--<input type="text" id="fphoto"  name="fphoto"><br>-->
+    <div class="form-group row">
+      <div class="col-sm-3">
+        <label for="fdatedeb"> Date de début : &nbsp;</label>
+      </div>
+      <div class="col-sm-3">
+        <input id="fdatedeb" type="date" class="form-control">
+      </div>
+    </div>
+    <div class="form-group row">
+      <div class="col-sm-3">
+        <label for="fdatefin"> Date de fin : &nbsp;</label>
+      </div>
+      <div class="col-sm-3">
+        <input id="fdatefin" type="date" class="form-control"><br>
+      </div>
+    </div>
+
+    <div class="form-group row">
+      <div class="col-sm-3">
+        <label for="fagemin">Age minimum : &nbsp;</label>
+      </div>
+      <div class="col-sm-3">
+        <input type="number" id="fagemin"  name="fagemin" class="form-control">
+      </div>
+    </div>
+    <div class="form-group row">
+      <div class="col-sm-3">
+        <label for="fagemax">Age maximum : &nbsp;</label>
+      </div>
+      <div class="col-sm-3">
+        <input type="number" id="fagemax"  name="fagemax" class="form-control"><br>
+      </div>
+    </div>
+    <div *ngIf="this.errorMessageAge.length!=0" class="alert alert-danger" role="alert"> {{this.errorMessageAge}} </div>
+
+    <div class="form-group row">
+      <div class="col-sm-3">
+        <label for="fgender"> Genre : &nbsp;</label>
+      </div>
+      <div class="col-sm-3">
+        <select name="gender" id="fgender" class="form-control">
+          <option value="indifferent" selected="selected">Indifférent</option>
+          <option value="homme">Homme</option>
+          <option value="femme">Femme</option>
+        </select>
+      </div>
+    </div>
+
+
+
+    <h5> Mots clés</h5>
+    <div *ngFor="let keyword of keywords_API " class="form-check form-check-inline">
+      <input class="form-check-input" type="checkbox" name="checkbox" id="{{keyword.id}}" (change)="checkCheckBoxvalue($event)">
+      <label for="{{keyword.id}}"> &nbsp;{{keyword.mot}} &nbsp;&nbsp;&nbsp;</label>
+    </div>
+  </div>
+<br>
+  <div>
+    <h4>Nombre de cibles : {{nb_people}} personne(s) touchées par ce ciblage</h4>
+  </div>
+<br>
+  <button (click)="show_annonces_page()" class="btn btn-secondary" style="margin-right:10%;margin-left:10%;">Retour</button>
+  <button type="submit" (click)="add_advertisement()" data-toggle="modal" data-target="#myModal" class="btn btn-outline-success">Ajouter l'annonce</button>
+
+</form>
+
+<!-- The Modal -->
+<div *ngIf="this.errorMessage.length==0" class="modal" id="myModal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h4 class="modal-title">Ciblage enregistré</h4>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+
+      <!-- Modal body -->
+      <div class="modal-body">
+        Votre ciblage a été enregistré et apparaîtra dans votre liste de ciblage.
+      </div>
+
+      <!-- Modal footer -->
+      <div class="modal-footer">
+        <button type="button" (click)="show_annonces_page()" class="btn btn-primary" data-dismiss="modal">Fermer</button>
+      </div>
+
+    </div>
+  </div>
+</div>
+

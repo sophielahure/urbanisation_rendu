@@ -1,0 +1,24 @@
+table{
+  margin-left:50px;
+  margin-top:50px;
+
+}
+
+#business_name {
+  margin-left: 75% ;
+  margin-top: 20px;
+}
+
+#button_new_ad {
+
+  margin-left: 75% ;
+}
+
+.sortable tr {
+  cursor: pointer;
+
+}
+
+h1{
+  color: #b06363;
+}
